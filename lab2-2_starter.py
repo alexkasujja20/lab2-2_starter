@@ -1,10 +1,9 @@
 # lab2-2_starter.py
 
 LOGFILE = "sample_auth_small.log"  # change filename if needed
-
-count = 0
-List_ips =[]
-Unique_List_Ips =[]
+List_ips=[]
+count=0
+Unique_list_ips=[]
 
 def simple_parser(line):
     """
@@ -16,7 +15,9 @@ def simple_parser(line):
         try:
             anchor = parts.index("from")    # Find the position of the token "port", our anchor
             port = parts[anchor+1]          # the port value will be next token, anchor+1
-            List_ips.append(port.strip())             # strip any trailing punctuation
+            List_ips.append(port.strip()) 
+           
+                        # strip any trailing punctuation
 
         except (ValueError, IndexError):
             return None
@@ -30,10 +31,10 @@ if __name__ == "__main__":
     with open(LOGFILE, "r") as f:
         for line in f:
             (simple_parser(line.strip()))
-            count +=1
-    Unique_List_Ips=set(List_ips)
-    Sorted_List_Ips=sorted(Unique_List_Ips)
-    print("Total lines read: ",count)
-    print("Number of Unique IPs: ",len(Unique_List_Ips))
-    print("First 10 Unique Ips: ",Sorted_List_Ips[0:10])
+            count+=1
+    Unique_list_ips=set(List_ips) #This is turn them into a list of the same element.
+    sorted_list= sorted(Unique_list_ips)
+    print("Lines Read is= ", count)
+    print("The Unique Ips= ", len(Unique_list_ips))
+    print(sorted_list[0:10])
     
